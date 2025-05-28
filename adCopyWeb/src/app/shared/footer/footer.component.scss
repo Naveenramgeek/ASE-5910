@@ -1,0 +1,26 @@
+.app-footer {
+  text-align: center;
+  font-size: 14px;
+  color: #888;
+  padding: 20px 16px;
+  background-color: #fafafa;
+  border-top: 1px solid #eee;
+  margin-top: 40px;
+
+  span {
+    display: block;
+    margin: 4px 0;
+  }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .app-footer {
+    font-size: 12px;
+    padding: 16px 12px;
+
+    span {
+      margin: 2px 0;
+    }
+  }
+}
