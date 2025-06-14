@@ -1,0 +1,24 @@
+.layout-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.layout-content {
+  flex: 1;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.ad-input-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ad-input {
+  width: 65%;
+}
+
+.generated-ad {
+  width: 30%;
+}

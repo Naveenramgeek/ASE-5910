@@ -1,0 +1,78 @@
+<div class="layout-wrapper">
+  <app-header></app-header>
+  <main class="layout-content">
+    <div class="row">
+      <!-- Left Panel: Form -->
+      <div class="col-lg-7 mb-4">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title mb-4 fw-semibold">Generate AI-powered social media ads in seconds</h5>
+
+            <form (ngSubmit)="generateAd()">
+              <div class="mb-3">
+                <label class="form-label">Product/Service Name</label>
+                <input type="text" class="form-control" [(ngModel)]="adData.title" name="title" required />
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Product Description</label>
+                <textarea class="form-control" rows="3" [(ngModel)]="adData.description" name="description" required></textarea>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Target Platform</label>
+                <select class="form-select" [(ngModel)]="adData.platform" name="platform">
+                  <option value="Instagram">Instagram</option>
+                  <option value="Facebook">Facebook</option>
+                  <option value="LinkedIn">LinkedIn</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Tone</label>
+                <select class="form-select" [(ngModel)]="adData.tone" name="tone">
+                  <option value="Friendly">Friendly</option>
+                  <option value="Professional">Professional</option>
+                  <option value="Excited">Excited</option>
+                </select>
+              </div>
+
+              <button class="btn btn-primary w-100" type="submit">Generate Ad Copy</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Panel: Preview and History -->
+      <div class="col-lg-5">
+        <div class="card shadow-sm mb-4">
+          <div class="card-body">
+            <h6 class="fw-semibold mb-3">Generated Ad Post</h6>
+
+            <div *ngFor="let post of generatedAds" class="mb-4">
+              <!-- Ad Image -->
+              <div class="position-relative text-center mb-2">
+                <img [src]="post.imageUrl" alt="Ad Image" class="img-fluid rounded shadow-sm" style="max-height: 240px; object-fit: cover;" />
+
+                <!-- Download icon -->
+                <a [href]="post.imageUrl" download class="position-absolute top-0 end-0 m-2 btn btn-sm btn-light border shadow">
+                  <i class="bi bi-download"></i> <!-- Bootstrap Icons required -->
+                </a>
+              </div>
+
+              <!-- Ad Description -->
+              <p class="small text-muted mb-1">{{ post.description }}</p>
+
+              <!-- Copy Button -->
+              <button class="btn btn-outline-primary btn-sm" (click)="copyToClipboard(post.description)">
+                <i class="bi bi-clipboard"></i> Copy Description
+              </button>
+              <hr />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <app-footer></app-footer>
+</div>
