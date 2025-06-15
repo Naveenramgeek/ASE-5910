@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import {HeaderComponent} from "../../shared/header/header.component";
 import {FooterComponent} from "../../shared/footer/footer.component";
-import {RouterOutlet} from "@angular/router";
-import {NgForOf, NgOptimizedImage} from "@angular/common";
+import {NgForOf,} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 
 @Component({
@@ -11,10 +10,8 @@ import {FormsModule} from "@angular/forms";
   imports: [
     HeaderComponent,
     FooterComponent,
-    RouterOutlet,
     NgForOf,
     FormsModule,
-    NgOptimizedImage
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
@@ -30,8 +27,9 @@ export class DashboardComponent {
 
   generatedAds = [
     {
-      imageUrl: 'img.png',
-      description: 'Introducing Nike’s Summer Collection – bold, breathable, and built for champions. Get 30% off select styles. Just Do It.'
+      imageUrl: 'nike.png',
+      description: 'Unleash your power this summer with Nike’s bold new collection.\n' +
+        'Get 30% off select styles – made for champions like you.'
     }
   ];
 

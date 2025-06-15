@@ -9,11 +9,10 @@ import { Auth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged,
 })
 export class AuthServiceService {
 
-  private auth: Auth = inject(Auth);
   private userSubject = new BehaviorSubject<User | null>(null);
   user$ = this.userSubject.asObservable();
 
-  constructor() {
+  constructor(private auth: Auth) {
     // Listen for user changes
     onAuthStateChanged(this.auth, (user) => {
       this.userSubject.next(user);

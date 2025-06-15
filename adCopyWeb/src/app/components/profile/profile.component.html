@@ -1,0 +1,27 @@
+<div class="layout-wrapper">
+  <app-header></app-header>
+  <main class="layout-content">
+    <div class="container mt-5 d-flex justify-content-center">
+      <div class="card text-center shadow p-4" style="max-width: 400px; width: 100%;">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4 class="mb-0">Profile</h4>
+        </div>
+
+        <img
+          [src]="(user$ | async)?.photoURL || 'assets/default-avatar.png'"
+          class="rounded-circle mb-3 mx-auto"
+          width="100"
+          height="100"
+          alt="User"
+        />
+
+        <div class="text-start">
+          <p><strong>Name: </strong>{{ (user$ | async)?.displayName }}</p>
+          <p><strong>Email: </strong>{{ (user$ | async)?.email }}</p>
+          <p><strong>User ID: </strong>{{ (user$ | async)?.uid }}</p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <app-footer></app-footer>
+</div>

@@ -24,6 +24,8 @@ export class SigninComponent {
   login() {
     this.authService.signInWithGoogle().then(() => {
       console.log('Logged in');
+      console.log(this.authService.getCurrentUser())
+      this.router.navigate(['/dashboard']);
     });
   }
 }
