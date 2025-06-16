@@ -22,7 +22,10 @@ export class SigninComponent {
   constructor(private router: Router) {}
 
   login() {
-    this.authService.signInWithGoogle().then(() => {
+    this.authService.signInWithGoogle().then((result) => {
+      result.user.getIdToken().then((idToken) => {
+        console.log(idToken);
+      })
       console.log('Logged in');
       console.log(this.authService.getCurrentUser())
       this.router.navigate(['/dashboard']);

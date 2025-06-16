@@ -1,6 +1,6 @@
 package com.SE5910.adCopyGenerator.controller;
 
-import com.SE5910.adCopyGenerator.model.AdPost;
+import com.SE5910.adCopyGenerator.dto.AdPostRequest;
 import com.SE5910.adCopyGenerator.service.AdPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,8 +17,8 @@ public class AdPostController {
     private AdPostService adImageService;
 
     @PostMapping("/generate")
-    public ResponseEntity<String> generateAdImage(@RequestBody AdPost request) {
-        String imagePath = adImageService.generateImageFromPrompt(request.getDescription());
+    public ResponseEntity<String> generateAdImage(@RequestBody AdPostRequest request) {
+        String imagePath = adImageService.generateImageFromPrompt(request);
         return ResponseEntity.ok("Image saved at: " + imagePath);
     }
 

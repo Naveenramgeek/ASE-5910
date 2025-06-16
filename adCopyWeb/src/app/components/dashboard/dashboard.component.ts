@@ -40,7 +40,6 @@ export class DashboardComponent {
   ];
 
   generateAd() {
-    // TODO: Call your backend API to generate ad
     console.log('Generating ad:', this.adData);
   }
 
