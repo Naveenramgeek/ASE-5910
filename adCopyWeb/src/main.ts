@@ -1,11 +1,11 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
-import {initializeApp} from "firebase/app";
 import {environment} from "./environment";
-import {provideAuth} from "@angular/fire/auth";
-import {provideFirebaseApp} from "@angular/fire/app";
-import {getAuth} from "firebase/auth";
+import {getAuth, provideAuth} from "@angular/fire/auth";
+import {initializeApp, provideFirebaseApp} from "@angular/fire/app";
+import {provideHttpClient, withInterceptors} from '@angular/common/http';
+import { authInterceptorFn} from "./app/interseptors/auth.interceptor";
 
 const firebaseProviders = [
   provideFirebaseApp(() => initializeApp(environment.firebase)),
@@ -14,5 +14,5 @@ const firebaseProviders = [
 
 bootstrapApplication(AppComponent, {
   ...appConfig,
-  providers: [...(appConfig.providers || []), ...firebaseProviders]
+  providers: [...(appConfig.providers || []), ...firebaseProviders, provideHttpClient(withInterceptors([authInterceptorFn]))]
 }).catch(err => console.error(err));

@@ -6,7 +6,7 @@
     </a>
 
     <!-- Right: Tabs + Profile -->
-    <div class="d-flex align-items-center gap-3">
+    <div *ngIf="(user$ | async)?.displayName" class="d-flex align-items-center gap-3">
       <!-- Navigation Tabs -->
       <nav class="nav nav-tabs border-0">
         <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>

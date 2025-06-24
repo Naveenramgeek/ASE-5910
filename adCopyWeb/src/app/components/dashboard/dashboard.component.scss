@@ -22,3 +22,14 @@
 .generated-ad {
   width: 30%;
 }
+.empty-image-placeholder {
+  width: 100%;
+  height: 200px;
+  background-color: #f0f0f0;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #888;
+}

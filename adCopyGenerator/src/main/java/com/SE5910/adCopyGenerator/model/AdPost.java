@@ -13,6 +13,9 @@ public class AdPost {
     private String userId;
     private String title;
     private String description;
+    private String platform;
+    private String tone;
     private String imageUrl;
+    private String adDescription;
     private LocalDateTime createdAt;
 }

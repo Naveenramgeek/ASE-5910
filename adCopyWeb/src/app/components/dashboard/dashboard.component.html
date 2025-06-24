@@ -49,27 +49,40 @@
           <div class="card-body">
             <h6 class="fw-semibold mb-3">Generated Ad Post</h6>
 
-            <div *ngFor="let post of generatedAds" class="mb-4">
-              <!-- Ad Image -->
-              <div class="position-relative text-center mb-2">
-                <img [src]="post.imageUrl" alt="Ad Image" class="img-fluid rounded shadow-sm" style="max-height: 240px; object-fit: cover;" />
+            <div *ngIf="imageGenerated" class="ad-container">
+              <div *ngFor="let post of generatedAds" class="mb-4">
+                <!-- Ad Image -->
+                <div *ngIf="!loading || !imageGenerated" class="position-relative text-center mb-2">
+                  <img [src]="post.imageUrl" alt="Ad Image" class="img-fluid rounded shadow-sm" style="max-height: 240px; object-fit: cover;" />
 
-                <!-- Download icon -->
-                <a [href]="post.imageUrl" download class="position-absolute top-0 end-0 m-2 btn btn-sm btn-light border shadow">
-                  <i class="bi bi-download"></i> <!-- Bootstrap Icons required -->
-                </a>
+                  <!-- Download icon -->
+                  <button (click)="downloadImage(post.imageUrl, 'ad.png')" class="position-absolute top-0 end-0 m-2 btn btn-sm btn-light border shadow">
+                    <i class="bi bi-download"></i>
+                  </button>
+<!--                  <a [href]="post.imageUrl" download class="position-absolute top-0 end-0 m-2 btn btn-sm btn-light border shadow">-->
+<!--                    <i class="bi bi-download"></i> &lt;!&ndash; Bootstrap Icons required &ndash;&gt;-->
+<!--                  </a>-->
+                </div>
+
+                <!-- Ad Description -->
+                <p *ngIf="!loading" class="small text-muted mb-1">{{ post.description }}</p>
+
+                <!-- Copy Button -->
+                <button *ngIf="!loading" class="btn btn-outline-primary btn-sm" (click)="copyToClipboard(post.description)">
+                  <i class="bi bi-clipboard"></i> Copy Description
+                </button>
+                <hr />
+                <div *ngIf="loading" class="text-center">
+                  <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                </div>
               </div>
-
-              <!-- Ad Description -->
-              <p class="small text-muted mb-1">{{ post.description }}</p>
-
-              <!-- Copy Button -->
-              <button class="btn btn-outline-primary btn-sm" (click)="copyToClipboard(post.description)">
-                <i class="bi bi-clipboard"></i> Copy Description
-              </button>
-              <hr />
             </div>
-          </div>
+            <div class="empty-image-placeholder" *ngIf="!imageGenerated">
+              <p class="text-muted">No image generated yet. Please fill out the form and click "Generate Ad Copy".</p>
+            </div>
+        </div>
         </div>
       </div>
     </div>

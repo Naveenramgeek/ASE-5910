@@ -5,20 +5,20 @@
       <h4 class="mb-4">Your Generated Ads</h4>
 
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-        <div class="col" *ngFor="let ad of adHistory">
+        <div class="col" *ngFor="let ad of adsHistory">
           <div class="card h-100 shadow-sm">
             <img [src]="ad.imageUrl" class="card-img-top" alt="Ad Image" />
 
             <div class="card-body d-flex flex-column">
-              <p class="card-text mb-3">{{ ad.description }}</p>
+              <p class="card-text mb-3">{{ ad.adDescription }}</p>
 
               <div class="mt-auto d-flex justify-content-between">
-                <button class="btn btn-outline-primary btn-sm" (click)="copyText(ad.description)">
+                <button class="btn btn-outline-primary btn-sm" (click)="copyToClipboard(ad.adDescription)">
                   Copy Text
                 </button>
-                <a [href]="ad.imageUrl" download class="btn btn-outline-secondary btn-sm">
-                  Download Image
-                </a>
+                <button (click)="downloadImage(ad.imageUrl, 'ad.png')" class="position-absolute top-0 end-0 m-2 btn btn-sm btn-light border shadow">
+                  <i class="bi bi-download"></i>
+                </button>
               </div>
             </div>
           </div>

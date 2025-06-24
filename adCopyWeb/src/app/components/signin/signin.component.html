@@ -1,13 +1,31 @@
-<div class="login-wrapper">
-  <div class="login-card">
-    <h1 class="app-title">Ad Copy Generator</h1>
-    <p class="tagline">Generate AI-powered social media ads in seconds</p>
+<div class="layout-wrapper">
+  <app-header></app-header>
+  <main class="layout-content">
+    <div class="landing-container">
+      <div class="content">
+        <div class="icons-row">
+          <img src="brain.png" alt="Brain" class="icon" />
+          <h1>
+            Create ads<br />
+            effortlessly <span class="highlight">with AI</span>
+          </h1>
+          <img src="magic.png" alt="Magic Wand" class="icon" />
+        </div>
 
-    <button (click)="login()" class="google-signin-button">
-      <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo" />
-      <span>Sign in with Google</span>
-    </button>
+        <p class="subtext">
+          Instantly generate compelling ad images tailored to your brand name,
+          description, target platform, and tone.
+        </p>
 
-    <p class="privacy-note">We only use your Google account to identify you. Your data is safe.</p>
-  </div>
+        <div class="login-row">
+          <img src="chart.png" alt="Chart" class="chart-icon" />
+          <button (click)="login()" class="google-signin-button">
+            <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo" />
+            <span>Sign in with Google</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+  <app-footer></app-footer>
 </div>

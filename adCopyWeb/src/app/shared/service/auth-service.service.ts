@@ -1,5 +1,4 @@
 import {inject, Injectable} from '@angular/core';
-// import firebase from "firebase/compat";
 
 import {BehaviorSubject} from "rxjs";
 import { Auth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged, User } from '@angular/fire/auth';

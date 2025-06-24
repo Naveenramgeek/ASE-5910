@@ -1,6 +1,6 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {AuthServiceService} from "../service/auth-service.service";
-import {AsyncPipe} from "@angular/common";
+import {AsyncPipe, NgIf} from "@angular/common";
 import {Router, RouterLink, RouterLinkActive} from "@angular/router";
 
 @Component({
@@ -9,7 +9,8 @@ import {Router, RouterLink, RouterLinkActive} from "@angular/router";
   imports: [
     AsyncPipe,
     RouterLink,
-    RouterLinkActive
+    RouterLinkActive,
+    NgIf
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
@@ -22,12 +23,10 @@ export class HeaderComponent implements OnInit{
   constructor(private router: Router) {
   }
   ngOnInit(): void {
-    console.log(this.authService.getCurrentUser())
   }
   logout() {
     this.authService.signOutUser().then(() => {
-      console.log('Logged out');
-      this.router.navigate(['']);
+      this.router.navigate(['/signin']);
     }).catch(error => {
       console.error('Logout error:', error);
     });}
